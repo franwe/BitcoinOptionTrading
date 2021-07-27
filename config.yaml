@@ -1,0 +1,58 @@
+# Package Overview
+package_name: spd_trading
+
+# Databases
+BTCUSD_deribit: BTCUSD_deribit
+BTCUSD_binance: BTCUSD_binance
+all_trades_deribit: deribit_transactions 
+option_table: trades_clean
+bandwidths_table: bandwidths_static.csv
+
+data_raw: 01_raw
+data_garch: 02_hd_GARCH
+data_rnd: 02_rnd
+data_densities: 02_rnd_hd
+data_trades: 03_trades
+plot_dir: plots
+
+# to set the random seed
+random_state: 1
+
+# model settings:
+cutoff: 0.5
+tau_section: small # small - big - huge
+
+## RND settings
+kernel: gaussian
+gridsize: 100 
+sampling: slicing
+n_sections: 15 
+loss: MSE
+
+## HD settings
+simulations: 5000 
+n_fits: 400
+window_length: 365
+variate_GARCH_parameters: True
+
+## kernel
+similarity_threshold: 0.0
+cut_tail_percent: 0.02
+
+
+# Variables
+# The variable we are attempting to predict
+target: q_M
+
+rnd_input_features:
+  - M
+  - iv
+  - S
+  - P
+  - K
+  - tau
+  - option
+
+hd_input_features:
+  - price
+  - date_str
