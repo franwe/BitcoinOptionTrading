@@ -6,8 +6,8 @@ from pydantic import BaseModel
 from strictyaml import load, YAML
 
 # Project Directories
-PACKAGE_ROOT = Path.cwd()
-CONFIG_FILE_PATH = PACKAGE_ROOT / "config.yaml"
+PACKAGE_ROOT = Path.cwd() / "BitcoinOptionTrading"
+CONFIG_FILE_PATH = PACKAGE_ROOT  / "config.yaml"
 DATA_DIR = PACKAGE_ROOT / "data"
 PLOT_DIR = PACKAGE_ROOT / "plots"
 
